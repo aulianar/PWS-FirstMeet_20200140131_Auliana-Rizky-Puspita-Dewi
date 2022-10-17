@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -27,12 +28,17 @@ public class KaryawanJpaController implements Serializable {
     public KaryawanJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.example_connectingdb_jar_0.0.1-SNAPSHOTPU");
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
+    public KaryawanJpaController() {
+    }
+
+    
+    
     public void create(Karyawan karyawan) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
